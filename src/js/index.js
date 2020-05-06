@@ -1,4 +1,5 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 // the searchview will become an object in which everything from searchView.js is stored
 import * as searchView from './views/searchView';
 import { elements, renderLoader, clearLoader } from './views/base';
@@ -10,6 +11,9 @@ import { elements, renderLoader, clearLoader } from './views/base';
 - shopping list object
 - liked recipes */
 const state = {};
+
+
+/* SEARCH CONTROLLER */
 
 const controlSearch = async () => {
 
@@ -49,3 +53,7 @@ elements.searchResPages.addEventListener('click', e => {
       console.log(goToPage);
     }
 });
+
+/* RECIPE CONTROLLER */
+
+
