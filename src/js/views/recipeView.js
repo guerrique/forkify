@@ -1,5 +1,6 @@
 import { elements } from './base';
-import { Fraction } from 'fractional';
+// import { Fraction } from 'fractional';
+import fracty from 'fracty';
 
 export const clearRecipe = () => {
   elements.recipe.innerHTML = '';
@@ -27,7 +28,13 @@ export const clearRecipe = () => {
 
 // };
 
-const formatCount = count => count ? new Fraction(count) : '?';
+// const formatCount = count => count ? new Fraction(count) : '?';
+    const formatCount = count => {
+      if (count) {
+        return `${fracty(count)}`;
+      }
+      return '?';
+    };
 
 const createIngredient = ingredient => `
   <li class="recipe__item">
