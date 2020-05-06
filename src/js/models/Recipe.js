@@ -37,6 +37,7 @@ export default class Recipe {
 
       const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
       const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz','tsp', 'tsp', 'cup', 'pound'];
+      const units = [...unitsShort, 'kg', 'g'];
 
       const newIngredients = this.ingredients.map(el => {
         // uniform units
@@ -53,7 +54,7 @@ export default class Recipe {
         const arrIng = ingredient.split(' ');
 
         // - find the index where the unit is located
-        const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+        const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
 
         let objIng;
 
