@@ -77,8 +77,10 @@ const controlRecipe = async () => {
       state.recipe = new Recipe(id);
 
       try {
-      // get the recipe data
+      // get the recipe data and parse the ingredients
       await state.recipe.getRecipe();
+      // console.log(state.recipe.ingredients);
+      state.recipe.parseIngredients();
 
       // calctime calcservings
       state.recipe.calcServings();
@@ -92,7 +94,6 @@ const controlRecipe = async () => {
           alert('Oups, something went wrong in the rendering of the recipe');
           // best here would be to implement some message on the UI
       }
-
     }
 };
 
