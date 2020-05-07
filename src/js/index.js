@@ -108,6 +108,23 @@ const controlRecipe = async () => {
 // window.addEventListener('load', controlRecipe);
 ['hashchange', 'load'].forEach(e => window.addEventListener(e, controlRecipe));
 
+// handling recipe button clicks (that do not show on first load of page)
+elements.recipe.addEventListener('click', e => {
+    // btn-decrease * means any child element of btn-decrease
+    if (e.target.matches('.btn-decrease, .btn-decrease *')) {
+      if (state.recipe.servings > 1) {
+        state.recipe.updateServings('dec');
+      }
+
+    } else if (e.target.matches('.btn-increase, .btn-increase *')) {
+      state.recipe.updateServings('inc');
+
+    }
+    recipeView.updateServingsIngredients(state.recipe);
+    console.log(state.recipe.servings);
+    console.log(state.recipe.ingredients[0]);
+})
+
 
 
 
