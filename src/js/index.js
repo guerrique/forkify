@@ -4,6 +4,7 @@ import List from './models/List';
 // the searchview will become an object in which everything from searchView.js is stored
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
+import * as listView from './views/listView';
 import { elements, renderLoader, clearLoader } from './views/base';
 // Global app controller
 
@@ -93,7 +94,7 @@ const controlRecipe = async () => {
       state.recipe.calcTime();
 
       // render recipe
-      console.log(state.recipe);
+      // console.log(state.recipe);
       clearLoader();
       recipeView.renderRecipe(state.recipe);
 
