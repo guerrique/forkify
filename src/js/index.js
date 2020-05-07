@@ -6,6 +6,7 @@ import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 // Global app controller
 
@@ -100,7 +101,7 @@ const controlRecipe = async () => {
       // render recipe
       // console.log(state.recipe);
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
 
       } catch (error) {
           console.log(error);
@@ -128,6 +129,10 @@ const controlList = () => {
 };
 
 
+// TESTING we put that out of the scope, because everytime we load the app we need likes for the renderRecipe
+state.likes = new Likes();
+likesView.toggleLikeMenu(state.likes.getNumLikes());
+
 // LIKE CONTROLLER
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
@@ -145,8 +150,10 @@ const controlLike = () => {
     );
 
     // toggle the like button
+    likesView.toggleLikeBtn(true);
 
     // add like to the UI list
+    likesView.renderLike(newLike);
     console.log(state.likes);
 
   // user has liked current recipe
@@ -154,11 +161,14 @@ const controlLike = () => {
     // remove like from the state
     state.likes.deleteLike(currentID);
     // toggle the like button
+    likesView.toggleLikeBtn(false);
 
     // remove like from the UI
-    console.log(state.likes);
+    likesView.deleteLike(currentID);
+    // console.log(state.likes);
 
   }
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 
