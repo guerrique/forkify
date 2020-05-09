@@ -130,8 +130,8 @@ const controlList = () => {
 
 
 // TESTING we put that out of the scope, because everytime we load the app we need likes for the renderRecipe
-state.likes = new Likes();
-likesView.toggleLikeMenu(state.likes.getNumLikes());
+// state.likes = new Likes();
+// likesView.toggleLikeMenu(state.likes.getNumLikes());
 
 // LIKE CONTROLLER
 const controlLike = () => {
@@ -172,7 +172,19 @@ const controlLike = () => {
 };
 
 
+// restore liked recipes on page load
+window.addEventListener('load', () => {
+  state.likes = new Likes();
 
+  // restore likes
+  state.likes.readStorage();
+
+  // toggle like menu button
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+  // render the existing likes
+  state.likes.likes.forEach(like => likesView.renderLike(like));
+});
 
 
 // handling recipe button clicks (that do not show on first load of page)
