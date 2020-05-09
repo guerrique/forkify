@@ -18,7 +18,7 @@ import { elements, renderLoader, clearLoader } from './views/base';
 const state = {};
 
 // TEST
-window.state = state;
+// window.state = state;
 
 
 /* SEARCH CONTROLLER */
@@ -66,7 +66,7 @@ elements.searchResPages.addEventListener('click', e => {
       const goToPage = parseInt(btn.dataset.goto, 10);
       searchView.clearResults();
       searchView.renderResults(state.search.result, goToPage);
-      console.log(goToPage);
+      // console.log(goToPage);
     }
 });
 
@@ -75,7 +75,7 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
     // get id from url
     const id = window.location.hash.replace('#', '');
-    console.log(id);
+    // console.log(id);
 
     if (id) {
       // prepare UI for changes
@@ -154,7 +154,7 @@ const controlLike = () => {
 
     // add like to the UI list
     likesView.renderLike(newLike);
-    console.log(state.likes);
+    // console.log(state.likes);
 
   // user has liked current recipe
   } else {
@@ -231,7 +231,7 @@ elements.recipe.addEventListener('click', e => {
   });
 
 // TEST
-window.l = new List();
+// window.l = new List();
 
 
 
